@@ -1,0 +1,84 @@
+bg0 = rectangle(w=500,h=500, fill="white")
+def giveGredient():
+    ott = line(x1=0,y1=0,x2=-100,y2=-100,stroke_width=1.3,stroke='white')|repeat(90,rotate(1)) | scale(.5) | translate(x=0, y=-70)
+    return ott
+ott1 = giveGredient() | rotate(0)
+ott2 = giveGredient() | rotate(36)
+ott3 = giveGredient() | rotate(72)
+def bg3():
+    ott = line(x1=0,y1=0,x2=-100,y2=-100,stroke_width=1.3,stroke='white')|repeat(90,rotate(1)) | scale(.5) | translate(x=0, y=-70)
+    temp = circle(r=50, fill="maroon", stroke="none") | translate(x=100, y=0) | rotate(18)
+    bg3 = combine([temp + ott])
+    return bg3
+bg3 = bg3() | repeat(10, rotate(36))
+#outer triangle 
+def bg2():
+    p1 = point(x=0, y=100)
+    p2 = point(x=0, y=-100)
+    p3 = point(x=100, y=0)
+    shape = polygon([p1, p2, p3], fill="yellow", stroke="#301934")
+    return shape
+bg2 = bg2() | translate(x=190, y=0) | scale(0.50) | repeat(10, rotate(36))
+color2 = ["#141436","#600935","#141436","#600935","#141436","#600935","#141436","#600935","#141436","#600935"]
+e1angle = 0
+e1list=[]
+for i in color2:
+    e1 = ellipse(w=135,h=250,fill=i, stroke="pink",stroke_width=1) | rotate(e1angle)
+    e1list.append(e1)
+    e1angle = e1angle + 20
+e1 = combine(e1list)
+# e1=ellipse(w=135,h=250,fill="#a70099")| repeat(1,rotate(15))
+bg1 = circle(r=95, fill="#B44673", stroke="none")
+c1 = circle(r=17, fill="white", stroke="none")
+c2 = circle(r=22, fill="#912629", stroke="none")
+c3upper = circle(r=22, fill="white", stroke="none")
+c3bg = circle(r=40, fill="#912629", stroke="none")
+sqsSpiral = rectangle(w=50, h=50, x=0, y=0, fill="white") | repeat(4, rotate(22.5))
+c3 = sqsSpiral | rotate(22)
+#logo
+logo = rectangle(w=103, h=50, fill='#2CC0CF', stroke='none', x=-45, y=70)+rectangle(w=50, h=50, fill='#2078F9', stroke='none', x=50, y=70)+rectangle(w=175, h=50, fill='#FECD3D', stroke='none', x=-12, y=0)+rectangle(w=70, h=50, fill='#EE3C35', stroke='none', x=-65, y=-70)+rectangle(w=42, h=50, fill='#91BF23', stroke='none', x=0, y=-70)+rectangle(w=42, h=50, fill='#045768', stroke='none', x=52, y=-70)  
+t = circle(r=22, fill="maroon", stroke="none")
+t2 = circle(r=11, fill="white", stroke="none")
+#circle
+c4 = circle(r=28, fill="white")
+c5 = circle(r=33, fill="white")
+c6 = circle(r=38, fill="#012a0b")
+#circle satage2 
+covercircle = circle(r=50, x=0, y=0, fill="white", stroke="1")
+def triangle(color,stroke):
+    p1 = point(x=0, y=0)
+    p2 = point(x=100, y=0)
+    p3 = point(x=0, y=100)
+    shape = polygon([p1, p2, p3], fill=color, stroke=stroke)
+    return shape
+shape1 = triangle(color="yellow", stroke="#9b9fec") | repeat(16, rotate(45)) |  scale(0.95)
+shape2 = triangle(color="#080d78", stroke="#9b9fec") | repeat(16, rotate(67.5)) |  scale(0.90)
+d1triangle = circle(r=21, x=43, y=0, fill="white", stroke="1") | repeat(8, rotate(45))
+#spiral
+# d1spiral1 = circle(r=28, x=35, y=0, fill="#E5F6D9", stroke="1") | repeat(8, rotate(45))
+spiral1 = circle(r=28, x=35, y=0, fill="#5E0A36", stroke="none")
+spiral2 = circle(r=22, x=35, y=0, fill="#C54311", stroke="none")
+spiral3 = circle(r=16, x=35, y=0, fill="rgb(208,186,8)", stroke="none")
+spiral4 = circle(r=10, x=35, y=0, fill="#FFFFFF", stroke="none")
+spiral = combine([spiral1,spiral2,spiral3,spiral4])
+#spiral end
+d1 = spiral | repeat(8, rotate(45))
+d2 = circle(r=28, x=43, y=0, fill="rgb(19,21,54)", stroke="1") | repeat(8, rotate(45))
+d3 = circle(r=33, x=43, y=0, fill="white", stroke="1") | repeat(8, rotate(45))
+d3 = d3 | rotate(21)
+# d1 = circle(r=21, x=55, y=0, fill="white", stroke="1") | repeat(8, rotate(45))
+# d2 = circle(r=25, x=65, y=0, fill="white", stroke="1") | repeat(8, rotate(45))
+# flower=ellipse(w=150,h=40, fill="blue" ) | repeat(6, rotate(30))
+# show(covercircle, shape1, shape2, d3, d2, d1, c6, c5, c4, c2, c1, c3, t)
+
+color1 = ["purple","violet","purple","violet","purple","violet","purple","violet","purple","violet","purple","violet","purple", "violet", "purple"]
+angle=0
+mylist=[]
+for i in color1:
+    d3 = circle(r=33, x=43, y=0, fill=i, stroke="none") | rotate(angle)
+    angle = angle + 45
+    mylist.append(d3)
+d3 = combine(mylist)
+d3 = d3 | rotate(21)
+show(d3)
+show(bg0, bg3,ott1,ott2,ott3, bg2, e1, bg1, covercircle, shape1, shape2, d3, d2, d1, c6, c5, c4, c2, c1,c3bg, c3,c3upper, t,t2)
